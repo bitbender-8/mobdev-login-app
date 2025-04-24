@@ -24,7 +24,7 @@ class _LoginPageState extends State<LoginPage> {
           padding: const EdgeInsets.symmetric(horizontal: 24),
           child: Form(
             key: _formStateKey,
-            autovalidateMode: AutovalidateMode.onUnfocus,
+            autovalidateMode: AutovalidateMode.onUserInteraction,
             child: ListView(
               children: [
                 const SizedBox(height: 32),
@@ -83,7 +83,7 @@ class _LoginPageState extends State<LoginPage> {
                       borderRadius: BorderRadius.circular(8),
                     ),
                   ),
-                  onPressed: _showAllNotifications,
+                  onPressed: _submitForm,
                   child: const Text(
                     'Submit',
                     style: TextStyle(fontSize: 16),
@@ -97,7 +97,7 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  void _showAllNotifications() {
+  void _submitForm() {
     if (_formStateKey.currentState!.validate()) {
       _formStateKey.currentState!.save();
       _showAlertDialog(context, _user);
